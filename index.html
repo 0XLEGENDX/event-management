@@ -964,6 +964,11 @@
   const app      = initializeApp(firebaseConfig);
   const auth     = getAuth(app);
   const provider = new GoogleAuthProvider();
+  
+  // Configure Google provider
+  provider.addScope('profile');
+  provider.addScope('email');
+  provider.setCustomParameters({ 'prompt': 'select_account' });
 
   /* ────────────────────────────────────────────────────── */
   /*  APP DATA / CONFIG                                      */
@@ -1467,10 +1472,20 @@
   /* ── Auth Flow ──────────────────────────────────────────── */
   async function signInWithGoogle() {
     try {
-      await signInWithPopup(auth, provider);
+      const result = await signInWithPopup(auth, provider);
+      console.log("Sign-in successful:", result.user);
     } catch (err) {
-      if (err.code !== "auth/popup-closed-by-user") {
-        toast("Sign-in failed. Please try again.", "error");
+      console.error("Google Sign-in Error:", err.code, err.message);
+      if (err.code === "auth/popup-closed-by-user") {
+        // User closed the popup, no error needed
+        return;
+      }
+      if (err.code === "auth/operation-not-supported-in-this-environment") {
+        toast("Authentication error: Popup blocked or unsupported. Check your browser settings.", "error");
+      } else if (err.code === "auth/unauthorized-domain") {
+        toast("Authentication error: Domain not authorized. Contact administrator.", "error");
+      } else {
+        toast("Sign-in failed: " + err.message, "error");
       }
     }
   }
