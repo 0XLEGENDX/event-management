@@ -1,0 +1,49 @@
+/* ══════════════════════════════════════════════════════════ */
+/*  RESPONSIVE DESIGN                                          */
+/* ══════════════════════════════════════════════════════════ */
+
+@media (max-width: 1100px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 800px) {
+  /* Hide left side of login on mobile */
+  .login-left {
+    display: none;
+  }
+
+  .login-right {
+    width: 100%;
+  }
+
+  /* Mobile sidebar */
+  .sidebar {
+    transform: translateX(-100%);
+  }
+
+  .main {
+    margin-left: 0;
+  }
+
+  /* Topbar adjustments */
+  .topbar {
+    padding: 0 20px;
+  }
+
+  /* Content padding */
+  .content {
+    padding: 20px;
+  }
+
+  /* Stats grid */
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Forms */
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}

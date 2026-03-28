@@ -1,0 +1,56 @@
+/* ══════════════════════════════════════════════════════════ */
+/*  GLOBAL STYLES & DESIGN TOKENS                             */
+/* ══════════════════════════════════════════════════════════ */
+
+/* ── Design tokens ─────────────────────────────────────────── */
+:root {
+  --bg:          #f7f5f0;
+  --surface:     #ffffff;
+  --surface2:    #f0ede7;
+  --border:      #e4dfd6;
+  --primary:     #4f7cff;
+  --primary-dk:  #3563e9;
+  --accent:      #ff6b6b;
+  --success:     #2ec27e;
+  --warn:        #f6a623;
+  --text:        #1a1a2e;
+  --text-2:      #6b6b82;
+  --text-3:      #a8a8b3;
+  --radius:      16px;
+  --radius-sm:   10px;
+  --shadow:      0 4px 24px rgba(0,0,0,.08);
+  --shadow-lg:   0 12px 48px rgba(0,0,0,.14);
+  --transition:  .22s cubic-bezier(.4,0,.2,1);
+}
+
+/* ── Reset ────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── Scrollbar ─────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 99px;
+}
+
+/* ── Utilities ─────────────────────────────────────────────── */
+.hidden { display: none !important; }
+.flex    { display: flex; }
+.column  { flex-direction: column; }
+.gap-8   { gap: 8px; }
+.gap-12  { gap: 12px; }
+.gap-16  { gap: 16px; }
+.center  { align-items: center; justify-content: center; }
